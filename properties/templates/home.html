@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | Find your home {% endblock %}
+{% block content %}
+<div class="google-map-wrapper">
+    <div id="google-map">
+        {% include 'partials/main_carousel.html' %}
+
+
+    </div>
+
+    <div class="container">
+
+    </div><!-- /.container --></div><!-- /.google-map-wrapper -->
+{% block featured %}
+    {# include "partials/featured.html" #}
+{% endblock %}
+<div class="container">
+{% block agents %}
+    {% include "partials/agents.html" %}
+{% endblock %}
+
+{% block premium %}
+    {% include "partials/premium.html" %}
+{% endblock %}
+{% block promo %}
+    {# include "partials/promo.html" #}
+{% endblock %}
+</div><!-- /.container -->
+{% block recent %}
+    {# include "partials/recent.html" #}
+{% endblock %}
+
+{% block javascript %}
+<script>
+$('#type').on('change', function () {
+    if (this.value == '1') {
+        $("#capacity").hide();
+    } else {
+        $("#capacity").show();
+    }
+
+});
+</script>
+
+{% endblock %}
+
+{% endblock %}

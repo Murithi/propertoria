@@ -1,0 +1,105 @@
+.jumbotron {
+    padding:10px;
+    margin-bottom: 10px;
+}
+
+.center-meta-on-hover .box-image-meta {
+background-color: #ff6600;
+}
+
+.flag {
+background-color: #0099ff;
+}
+
+a {
+color: #F6AECD;
+}
+
+.contact .fa {
+   color: #0099ff;
+}
+
+
+footer-top-dark .footer-top h3 {
+    color: #0099ff;
+}
+
+.box-image-meta {
+background-color: #ff6600;
+}
+
+.widget h3:after {
+background-color: #0099ff;
+}
+
+.footer-nav ul li a:hover, .navbar-nav ul li a:hover{
+  background-color: #0099ff;
+}
+.footer-nav > li:hover > a, .navbar-default .navbar-nav > li:hover > a, .box-subtitle  {
+  color: #F6AECD;
+}
+
+#header {
+/*border-top: 0px; */
+}
+
+.megamenu > ul {
+    top: 114px;
+}
+
+
+#google-map, #google-map-directory {
+    height: 600px;
+}
+#search-header{
+    color: #ffffff;
+}
+
+.search {
+    margin-top: -40%;
+}
+.search .form-section{
+    background: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-control {
+    padding: 8px 10px;
+}
+
+.btn-terciary {
+    background-color: #EE3F9E;
+}
+.btn-terciary:active, .btn-terciary:focus, .btn-terciary:hover {
+background-color: #EE3F9E;
+}
+
+.hero-title {
+    color: #0099ff;
+    font-size: 180px;
+    font-weight: 700;
+}
+
+
+
+.header-submenu li .fa {
+    color: #ff6600;
+}
+
+.widgetized-title:after {
+    background-color: #EE3E9D;
+}
+
+.widget-boxed-secondary {
+    background-color: #0099ff;
+}
+
+a:hover {
+color: #F6AECD;
+}
+
+#map {
+        height: 400px;
+        width: 100%;
+       }

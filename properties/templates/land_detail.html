@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | {{ property.name }} {% endblock %}
+{% load humanize %}
+{% load thumbnail %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="block-content">
+                <h2 class="widgetized-title">
+                    {{ property.name }} <small class="subtitle">{{ property.neighbourhood }}, {{ property.city }}</small>
+                </h2>
+
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" {% if forloop.first %}class="active"{% endif %}></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        {% for image in images %}
+                            {% thumbnail  image.file "850x490" crop="center" as img %}
+                            <div {% if forloop.first %}class="item active"{% else %}class="item"{% endif %}>
+                                <img alt="{{ property.name }}" src="{{ img.url }}">
+                            </div>
+                            {% endthumbnail %}
+                        {% endfor %}
+                    </div><!-- /.carousel-inner -->
+                </div><!-- /.carousel -->
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3 class="widgetized-title">Overview</h3>
+
+                        <div class="box background-white">
+                            <div class="box-body">
+                                <div class="box-content">
+                                    <dl class="dl-horizontal no-top-margin">
+                                        <dt class="odd">Price</dt>
+                                        <dd class="odd">Ksh {{ property.price|floatformat|intcomma|intword }}</dd>
+                                        {% if "land" in property.name %}
+                                        <dt>Type</dt>
+                                        <dd>{{ property.property_type }}</dd>
+                                        {% else %}
+                                        <!--<dt>Baths</dt>
+                                        <dd>2</dd>
+
+                                        <dt class="odd">Beds</dt>
+                                        <dd class="odd">{{ property.bedrooms }}</dd>
+                                        <dt>Type</dt>
+                                        <dd>{{ property.property_type }}</dd>
+                                        <dt class="odd">Garage</dt>
+                                        <dd class="odd">Yes</dd>-->
+                                        {% endif %}
+                                    </dl>
+                                </div>
+                            </div>
+                        </div><!-- /.box -->
+                    </div>
+
+                    <div class="col-sm-8">
+                        <h3 class="widgetized-title">Description</h3>
+                        <p>
+                            {{ property.description }}
+                        </p>
+                    </div>
+                </div>
+
+                    <h3 class="widgetized-title">Available</h3>
+
+                                <div class="row">
+                                    <ul class="property-detail-amenities list-unstyled">
+                                        {% for feature in features %}
+                                            <li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> {{ feature.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div><!-- /.row -->
+            </div><!-- /.block-content -->
+        </div>
+
+        <div class="col-sm-3">
+            <div class="sidebar">
+
+                <div class="block-content">
+
+                    <div class="widget widget-boxed">
+                        <foTitlerm  action="/properties/message/" enctype="multipart/form-data" method="post" id="contact-agent" novalidate>
+
+              	<h3>Contact Agent</h3>
+              	   {% csrf_token %}
+                    {% bootstrap_messages %}
+                    {{ form.non_field_errors }}
+                    {% bootstrap_form form %}
+                    <input type="hidden" name="property" value="{{ property.id }}" />
+                    <!--
+			        <p>By sending, you agree to <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+			        -->
+                    {% buttons %}
+                    <button type="submit" class="btn btn-terciary btn-block">
+                     Submit
+                    </button>
+                  {% endbuttons %}
+
+
+            </foTitlerm>
+
+</div><!-- /.widget -->
+<!--
+<div class="widget widget-boxed widget-boxed-secondary">
+    <form method="post">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control">
+        </div><!-- /.form-group -->
+<!--
+
+        <div class="form-group">
+            <label>Type</label>
+
+            <select class="form-control">
+                <option value="">Apartman</option>
+                <option value="">Building Area</option>
+                <option value="">Condo</option>
+                <option value="">House</option>
+                <option value="">Warehouse</option>
+            </select>
+        </div><!-- /.form-group -->
+<!--
+
+        <div class="form-group">
+            <label>Price From</label>
+
+            <select class="form-control">
+                <option value="">2000 €</option>
+                <option value="">3000 €</option>
+                <option value="">5000 €</option>
+            </select>
+        </div><!-- /.form-group -->
+<!--
+        <div class="form-group">
+            <label>Price To</label>
+
+            <select class="form-control">
+                <option value="">2000 €</option>
+                <option value="">3000 €</option>
+                <option value="">5000 €</option>
+            </select>
+        </div><!-- /.form-group -->
+<!--
+        <div class="form-group">
+            <label>Baths</label>
+
+            <select class="form-control">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+            </select>
+        </div><!-- /.form-group -->
+<!--
+        <div class="form-group">
+            <label>Beds</label>
+
+            <select class="form-control">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+            </select>
+        </div><!-- /.form-group -->
+<!--
+        <input type="submit" class="btn btn-block btn-primary" value="Filter">
+    </form>
+</div><!-- /.widget --><!--
+                    <div class="widget widget-boxed widget-boxed-dark">
+    <h3>Resellers</h3>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i> Apartman<span class="badge">149</span></a>
+        <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i> Building Area<span class="badge">35</span></a>
+        <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i> Condo<span class="badge">1254</span></a>
+        <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i> House<span class="badge">35</span></a>
+        <a href="#" class="list-group-item"><i class="fa fa-angle-right"></i> Warehouse<span class="badge">351</span></a>
+    </div><!-- /.list-group -
+</div><!-- /.widget -->                 </div><!-- /.block-content -->
+            </div><!-- /.sidebar -->
+        </div>
+    </div><!-- /.row -->
+
+    <div class="block-content background-secondary fullwidth" data-background-image="../../assets/img/tmp/real-estate/banner3.png">
+        <div class="block-content-inner">
+            <h3 class="widgetized-title">Contact Agent</h3>
+
+            <form method="post" action="?" class="ng-pristine ng-valid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your name" required="required">
+                        </div><!-- /.form-group -->
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail" required="required">
+                        </div><!-- /.form-group -->
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Phone" required="required">
+                        </div><!-- /.form-group -->
+                    </div>
+
+                    <div class="col-sm-6">
+                        <textarea placeholder="Message" required="required" class="form-control h155" rows="4"></textarea>
+                    </div>
+                </div><!-- /.row -->
+
+                <div class="clearfix">
+                    <p class="pull-left"></p>
+                    <a href="#" class="btn btn-primary pull-right">Send</a>
+                </div>
+            </form>
+        </div><!-- /.block-content-inner -->
+    </div><!-- /.block-content -->
+</div>
+{% endblock %}

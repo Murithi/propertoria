@@ -1,0 +1,199 @@
+    <div id="header-wrapper">
+        <div id="header" style="">
+            <div id="header-inner" >
+                <nav class="navbar navbar-default">
+                    <div class="header-secondary" >
+                        <div class="containerheaders clearfix left ">
+                            <div>
+                                 <ul class="header-submenu pull-right">
+
+                            {% if  user.is_authenticated %}
+                                <li><a href="{% url 'listings.property_list' %}"><i class="fa fa-dashboard" style="font-size: 15px;;color:#FFFFFF;">
+                                   Dashboard</i> </a></li>
+                            {% else %}
+                                <li><a href="{% url 'account_signup' %}"><i class="fa fa-users color-gray-dark" style="font-size:15px;color:#FFFFFF;">
+                                    Register</i> </a></li>
+                                <li><a href="{% url 'account_login' %}"><i class="fa fa-sign-in color-gray-dark" style="font-size:15px;color:#FFFFFF;">
+                                    Login</i> </a></li>
+                                <li><a href="{% url 'account_login' %}"><i class="fa fa-plus-square color-gray-dark" style="font-size:15px;color:#FFFFFF;">
+                                   Submit</i> </a></li>
+                            {% endif %}
+
+                            </ul>
+
+                            </div>
+                        </div><!-- /.container -->
+
+                    </div><!-- /.header-secondary -->
+
+                    <div class="container" style="width: 100%;">
+                        <div class="row" >
+                            <div class="col-md-2">
+                                 <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <a class="navbar-brand" href="/">
+                                <span class="logo-styled">
+                                    <span class="logo-title">
+                                        <img src="{{ STATIC_URL }}img/msproperties.png" alt="">
+                                    </span><!-- /.logo-title -->
+                                </span><!-- /.logo-styled -->
+                            </a>
+                        </div>
+                            </div>
+                             <div class="col-md-10 text-right">
+                                    <div class="collapse navbar-collapse" id="navbar-main">
+                                        <ul class="nav navbar-nav navbar-right">
+
+                                            <li class="menuparent hidden-sm">
+                                                <a href="/">Home</a>
+                                            </li>
+
+
+
+            <li class="menuparent megamenu columns4">
+        <a href="#">Land </a>
+        <ul>
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> Type</a></li>
+                    <li><a href="{% url 'land.land_leasing' %}">Land For Lease</a></li>
+                    <li><a href="{% url 'land.land_sale' type='land' %}">Land For sale</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> Towns</a></li>
+                    <li><a href="{% url 'land.land_city' city='nairobi' %}">Nairobi</a></li>
+                    <li><a href="{% url 'land.land_city' city='mombasa' %}">Mombasa</a></li>
+                    <li><a href="{% url 'land.land_city' city='kisumu' %}">Kisumu</a></li>
+                    <li><a href="{% url 'land.land_city' city='nakuru' %}">Nakuru</a></li>
+                    <li><a href="{% url 'land.land_city' city='eldoret' %}">Eldoret</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> Neighbourhoods</a></li>
+                    <li><a href="{% url 'land.land_neighbourhood' neighbourhood='westlands' %}">Westlands</a></li>
+                    <li><a href="{% url 'land.land_neighbourhood' neighbourhood='riverside' %}">Riverside</a></li>
+                    <li><a href="{% url 'land.land_neighbourhood' neighbourhood='kileleshwa' %}">Kileleshwa</a></li>
+                    <li><a href="{% url 'land.land_neighbourhood' neighbourhood='kilimani' %}">Kilimani</a></li>
+                    <li><a href="{% url 'land.land_neighbourhood' neighbourhood='karen' %}">Karen</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li class="menuparent megamenu columns4">
+        <a href="#">Property </a>
+        <ul>
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> For rent</a></li>
+                    <li><a href="{% url 'properties.list_letting' %}">All properties for rent</a></li>
+                    <li><a href="{% url 'properties.list_letting' type='apartment' %}">Apartments</a></li>
+                    <li><a href="{% url 'properties.list_letting' type='office' %}">Offices</a></li>
+                    <li><a href="{% url 'properties.list_letting' type='house' %}">Houses</a></li>
+                    <li><a href="{% url 'properties.list_letting' type='townhouse' %}">Townhouses</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> For Sale</a></li>
+                    <li><a href="{% url 'properties.list_sale' %}">All properties on sale</a></li>
+                    <li><a href="{% url 'properties.list_sale' type='apartment' %}">Apartments</a></li>
+                    <li><a href="{% url 'properties.list_sale' type='office' %}">Offices</a></li>
+                    <li><a href="{% url 'properties.list_sale' type='house' %}">Houses</a></li>
+                    <li><a href="{% url 'properties.list_sale' type='townhouse' %}">Townhouses</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> Towns</a></li>
+                    <li><a href="{% url 'properties.list_city' city='nairobi' %}">Nairobi</a></li>
+                    <li><a href="{% url 'properties.list_city' city='mombasa' %}">Mombasa</a></li>
+                    <li><a href="{% url 'properties.list_city' city='kisumu' %}">Kisumu</a></li>
+                    <li><a href="{% url 'properties.list_city' city='nakuru' %}">Nakuru</a></li>
+                    <li><a href="{% url 'properties.list_city' city='eldoret' %}">Eldoret</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <ul>
+                    <li class="header"><a href="#"><i class="fa fa-columns"></i> Neighbourhoods</a></li>
+                    <li><a href="{% url 'properties.list_neighbourhood' neighbourhood='westlands' %}">Westlands</a></li>
+                    <li><a href="{% url 'properties.list_neighbourhood' neighbourhood='riverside' %}">Riverside</a></li>
+                    <li><a href="{% url 'properties.list_neighbourhood' neighbourhood='kileleshwa' %}">Kileleshwa</a></li>
+                    <li><a href="{% url 'properties.list_neighbourhood' neighbourhood='kilimani' %}">Kilimani</a></li>
+                    <li><a href="{% url 'properties.list_neighbourhood' neighbourhood='karen' %}">Karen</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+
+    <li class="menuparent">
+        <a href="#">Management Services</a>
+    </li>
+
+    <li class="menuparent">
+        <a href="#">Vacancies</a>
+    </li>
+    <li class="menuparent">
+        <a href="#">Facts</a>
+    </li>
+
+    <li class="menuparent">
+        <a href="{% url 'about' %}">About Us</a>
+    </li>
+    <li>
+    <a href="https://www.facebook.com/MS-Properties-304673639656692/" class="facebook" >
+        <i class="fa fa-facebook" style="font-size:15px;color:#F6AECD;"></i>
+    </a>
+    </li>
+    <li>
+        <a href="https://twitter.com/MSPropertiesKe/" class="twitter "  >
+            <i class="fa fa-twitter" style="font-size:15px;color:#F6AECD;"></i>
+        </a>
+    </li>
+
+
+    <li><a href="#" class="googleplus">
+                <i class="fa fa-google-plus" style="font-size:15px;color:#F6AECD;"></i>
+        </a>
+    </li>
+
+    <li>
+        <a href="#" class="whatsapp">
+                <i class="fa fa-whatsapp" style="font-size:15px;color:#F6AECD;"></i>
+            </a>
+    </li>
+
+
+
+
+</ul><!-- /.nav -->                        </div><!-- /.navbar-collapse -->
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </nav>
+            </div><!-- /#header-inner -->
+        </div><!-- /#header -->
+    </div><!-- /#header-wrapper -->

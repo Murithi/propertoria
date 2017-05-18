@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ block.super }}{% trans "|Log out" %}{% endblock %}
+
+{% block content %}
+    <div class="hero-title center">
+    Goodbye
+    </div>
+
+    <div class="hero-subtitle center">
+        {% trans "You have been signed out. Till we meet again." %}
+    </div>
+{% endblock %}

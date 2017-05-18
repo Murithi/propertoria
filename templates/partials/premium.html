@@ -1,0 +1,82 @@
+{% load humanize %}
+<div class="block-content fullwidth background-white">
+    <div class="block-content-inner">
+        <div class="boxes">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="widgetized-title">Most Recent Properties</h3>
+
+                    <div class="row">
+                        {% for property in properties %}
+                            <div class="col-sm-4 col-md-3">
+                            <div class="box image-zoom">
+                                <div class="box-picture">
+                                    <div class="flag">Ksh {{ property.price|floatformat|intcomma|intword }}</div>
+
+                                    <div class="box-content">
+                                        <table class="box-table box-picture-meta">
+                                            <tr>
+                                                 {% ifequal property.property_type "land"%}
+                                                    <td>
+                                                    <strong>Size</strong><br/>
+                                                    {% if property.structure_size %}
+                                                       {{ property.structure_size }}<sup>2</sup>
+                                                    {% else %}
+                                                        --
+                                                    {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <strong>Neigh</strong><br/>
+                                                        {{ property.neighbourhood }}
+                                                    </td>
+                                                    <td>
+                                                {% else %}
+                                                        <td>
+                                                            <strong>Size</strong><br/>
+                                                            {% if property.structure_size %}
+                                                               {{ property.structure_size }}<sup>2</sup>
+                                                            {% else %}
+                                                                --
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+                                                            <strong>Neigh</strong><br/>
+                                                            {{ property.neighbourhood }}
+                                                        </td>
+                                                        <td>
+                                                            <strong>Beds</strong><br/>
+                                                            {{ property.bedrooms }}
+                                                        </td>
+                                                        <td>
+                                                            <strong>Bath</strong><br/>
+                                                            {{ property.bathrooms }}
+                                                        </td>
+                                                 {% endifequal %}
+
+                                            </tr>
+                                        </table>
+                                    </div><!-- /.box-content -->
+
+                                    <a href="{% url 'properties.listing' property.slug %}">
+                                        <img src="{{ MEDIA_URL }}{{ property.primary_image_thumbnail }}" alt="{{ property.name }}">
+                                    </a>
+                                </div><!-- /.box-picture -->
+
+                                <div class="box-body">
+                                    <h2 class="box-title-plain">
+                                        <a href="{% url 'properties.listing' property.slug %}">{{ property.name|truncatechars:15 }}</a>
+                                    </h2><!-- /.box-title -->
+
+                                    <div class="box-location box-subtitle">
+                                        <div class="location-country">{{ property.neighbourhood}}, {{ property.city }}</div>
+                                    </div><!-- /.box-subtitle -->
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                        {% endfor %}
+                    </div><!-- /.row -->
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.boxes -->
+    </div><!-- /.block-content-inner -->
+</div><!-- /.block-content -->

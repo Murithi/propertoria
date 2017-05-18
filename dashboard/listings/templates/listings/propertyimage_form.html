@@ -1,0 +1,11 @@
+{% extends "upload_form.html" %}
+{% block pageicon %}<i class="fa fa-file-text-o"></i>{% endblock pageicon %}
+{% block pagetitle %}{{ property }} Images{% endblock pagetitle %}
+{% block header %}Property images{% endblock %}
+{% block header_actions %}
+   <li class="active"><a href="{% url "listings.property_list" %}" class="btn btn-alt">
+      <span class="elusive icon-list"></span> My Properties</a></li>
+{% endblock %}
+{% block instructions %}
+<h4>Please upload the property images here.</h4>
+{% endblock %}

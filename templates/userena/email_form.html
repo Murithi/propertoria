@@ -1,0 +1,25 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% load url from future %}
+{% load bootstrap3 %}
+{% block content_title %}<h2>{% blocktrans with user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
+{% block header %}{% trans "Change Email" %}{% endblock %}
+{% block header_actions %}
+    <li class="active"><a href="{% url "userena_profile_detail" username=user.username %}" class="btn">Current Profile</a></li>
+    <li class="active"><a href="{% url "userena_password_change" username=user.username %}" class="btn">Change Password</a></li>
+    <li class="active"><a href="{% url "userena_profile_edit" username=user.username %}" class="btn">Edit Profile</a></li>
+{% endblock %}
+{% block content %}
+<form action="" method="post" class="form-horizontal">
+  {% csrf_token %}
+  {% bootstrap_form form layout="horizontal" %}
+  {% buttons  layout='horizontal' %}
+    <button type="submit" class="btn btn-primary">
+        Change Email
+    </button>
+    <button type="button" class="btn" onclick="history.back()">
+        Cancel
+    </button>
+    {% endbuttons %}
+</form>
+{% endblock %}

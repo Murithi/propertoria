@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %} MS Properties Dashboard{% endblock %}</title>
+		<meta name="description" content="">
+		<meta name="author" content="Karakana Team">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% load staticfiles %}
+        <!-- JS Libs -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery.js"><\/script>')</script>
+        {% load bootstrap3 %}
+        {# Load CSS and JavaScript #}
+        {# Load CSS and JavaScript #}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+		<!-- PrettyCheckable Styles -->
+		<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/plugins/prettycheckable/prettyCheckable.css'>
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/sangoma-blue.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/custom.css">
+
+		<script src="{{ STATIC_URL }}js/libs/modernizr.js"></script>
+
+		<!-- IE8 support of media queries and CSS 2/3 selectors -->
+		<!--[if lt IE 9]>
+			<script src="{{ STATIC_URL }}js/libs/respond.min.js"></script>
+			<script src="{{ STATIC_URL }}js/libs/selectivizr.js"></script>
+		<![endif]-->
+		{% block fileuploadassets %}{% endblock %}		
+	</head>
+	<body>
+		
+		<!-- Full height wrapper -->
+		<div id="wrapper">
+			
+			<!-- Main page header -->
+			<header id="header" class="container">
+
+				<h1>
+					<!-- Main page logo -->
+					<a href="/" class="brand">MS Properties</a>
+		
+				</h1>
+				
+				<!-- User profile -->
+				<div class="user-profile">
+					<figure>
+
+						<!-- User profile avatar
+						<img alt="avatar" src="">
+						 -->
+						<!-- User profile info -->
+						<figcaption>
+							<strong><a href="{% url "users.profile_detail" %}" class="">{{ user.first_name }} {{ user.last_name }}</a></strong>
+							<ul>
+								<li><a href="{% url "users.profile_detail" %}" title="Account settings">My Account</a></li>
+								<li><a href="{% url "account_logout" %}" title="Logout">Logout</a></li>
+							</ul>
+						</figcaption>
+						<!-- /User profile info -->
+
+					</figure>
+				</div>		
+		<!-- /Full height wrapper -->
+		
+				<!-- /User profile -->
+                <!-- Main navigation -->
+				<nav class="main-navigation navbar navbar-default" role="navigation">
+
+					<!-- Collapse navigation for mobile -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-navigation-collapse">
+							<span class="elusive icon-file"></span> Online store
+						</button>
+					</div>
+					<!-- /Collapse navigation for mobile -->
+
+					<!-- Navigation -->
+					<div class="main-navigation-collapse collapse navbar-collapse">
+
+						<!-- Navigation items -->
+						<ul class="nav navbar-nav">
+                            <!--
+							<li>
+								<a href="#"> Dashboard</a>
+							</li>
+							-->
+
+							<!-- Dropdown navigation items -->
+							<li>
+								<a href="{% url "listings.property_list" %}"> Properties</a>
+							</li>
+							<!-- /Dropdown navigation items -->
+
+							<!-- Dropdown navigation with multi-level dropdown -->
+							<li class="dropdown">
+								<a href="{% url "users.profile_detail" %}"> My Account</a>
+							</li>
+							<!-- /Dropdown navigation with multi-level dropdown -->
+
+							<li>
+								<a href="{% url "account_logout" %}"><span class="elusive icon-lock-alt"></span> Logout</a>
+							</li>
+						</ul>
+						<!-- /Navigation items -->
+
+
+					</div>
+					<!-- /Navigation -->
+
+				</nav>
+				<!-- /Main navigation -->
+
+
+
+			</header>
+			<!-- /Main page header -->
+			
+			<!-- Main page container -->
+			<section class="container" role="main">
+			<!-- Grid row -->
+				<div class="row">
+                <!-- Data block -->
+                <article class="col-sm-12">
+                    <div class="blue data-block">
+                        {% bootstrap_messages %}
+                        <header>
+                            <h2>{% block header %}{% endblock %}</h2>
+                            <ul class="data-header-actions">
+                                {% block header_actions %}{% endblock %}
+                            </ul>
+                        </header>
+
+                        <section>
+                            <div class="row">
+                                {% block content %}
+
+                                {% endblock %}
+                            </div>
+                        </section>
+
+                    </div>
+                </article>
+        </div>
+	 	<!-- Main page footer -->
+		<footer id="footer">
+			<div class="container">
+
+				<!-- Footer info -->
+				<p>&copy; MS Properties</p>
+				<!-- Footer back to top -->
+				<a href="#top" class="btn btn-alt"><span class="icon-arrow-up"></span></a>
+
+			</div>
+		</footer>
+		<!-- /Main page footer -->
+
+		<!-- Wizard -->
+		<script src="{{ STATIC_URL }}js/plugins/bootstrapWizard/jquery.bootstrap.wizard.js"></script>
+
+	</div>
+
+	</body>
+</html>

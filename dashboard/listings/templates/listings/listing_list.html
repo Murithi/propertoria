@@ -1,0 +1,153 @@
+{% extends "back.html" %}
+{% load querystring from django_tables2 %}
+{% load trans blocktrans from i18n %}
+{% load bootstrap3 %}
+{% block header %} My Properties {% endblock %}
+{% block header_actions %}
+   <li class="active"><a href="{% url "listings.property_new" %}" class="btn btn-alt"><span class="elusive icon-plus-sign"></span> Add Property</a></li>
+{% endblock %}
+
+{% if table.page %}
+<div class="table-container">
+{% endif %}
+{% block content %}
+{% block table %}
+<table class="table table-striped"{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
+    {% block table.thead %}
+    <thead>
+        <tr>
+        {% for column in table.columns %}
+            {% if column.orderable %}
+            <th {{ column.attrs.th.as_html }}><a href="{% querystring table.prefixed_order_by_field=column.order_by_alias.next %}">{{ column.header }}</a></th>
+            {% else %}
+            <th {{ column.attrs.th.as_html }}>{{ column.header }}</th>
+            {% endif %}
+        {% endfor %}
+            <th>Status</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    {% endblock table.thead %}
+    {% block table.tbody %}
+    <tbody>
+        {% for row in table.page.object_list|default:table.rows %} {# support pagination #}
+        {% block table.tbody.row %}
+        <tr class="{% cycle "odd" "even" %}">
+            {% for column, cell in row.items %}
+                <td {{ column.attrs.td.as_html }}>{{ cell }}</td>
+            {% endfor %}
+            <td><ul class="list-unstyled">
+                {% if row.record.features.all %}
+
+                    <li class="text-success" data-toggle="tooltip" title="<div style='text-align:left'>
+                        Features have been added</div>">
+                        <i class="elusive icon-ok" ></i><span>Features have been added.</span>
+                      </li>
+                {% else %}
+                    <li class="text-warning" data-toggle="tooltip" title="<div style='text-align:left'>
+                      Features have not been added</div>">
+                        <i class="elusive icon-remove" ></i>Features have not been added.
+                      </li>
+                {% endif %}
+
+                {% if row.record.images.all %}
+                    <li class="text-success" data-toggle="tooltip" title="<div style='text-align:left'>
+                        Images have been added</div>">
+                        <i class="elusive icon-ok" ></i>Images have been added.
+                      </li>
+                {% else %}
+                    <li class="text-warning" data-toggle="tooltip" title="<div style='text-align:left'>
+                      Images have not been added</div>">
+                        <i class="elusive icon-remove" ></i>Images have not been added.
+                      </li>
+                {% endif %}
+
+                {% if row.record.documents.all %}
+                    <li class="text-success" data-toggle="tooltip" title="<div style='text-align:left'>
+                        Documents have been added</div>">
+                        <i class="elusive icon-ok" ></i>Documents have been added.
+                      </li>
+                {% else %}
+                    <li class="text-warning" data-toggle="tooltip" title="<div style='text-align:left'>
+                      Documents have not been added</div>">
+                        <i class="elusive icon-remove" ></i>Documents have not been added.
+                      </li>
+                {% endif %}
+
+
+
+
+                </ul>
+            </td>
+            <td>
+                {% if row.record.status_percentage < 20 %}
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{ row.record.status_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.record.status_percentage }}%;">
+                        <span>{{ row.record.status_percentage }}% Complete</span>
+                    </div>
+                </div>
+                {% elif row.record.status_percentage < 60 %}
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ row.record.status_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.record.status_percentage }}%;">
+                        <span>{{ row.record.status_percentage }}% Complete</span>
+                    </div>
+                </div>
+                {% else %}
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ row.record.status_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.record.status_percentage }}%;">
+                        <span>{{ row.record.status_percentage }}% Complete</span>
+                    </div>
+                </div>
+
+
+                {% endif %}
+            </td>
+            <td>
+                <ul class="list-unstyled">
+                    <li><a>Property in detail</a></li>
+                    <li><a  href="{% url 'properties.listing' row.record.slug %}" target="_blank">View Property on site</a></li>
+                    <li><a href="{% url 'listings.property_edit' row.record.id %}">Edit Details</a></li>
+                    {% if row.record.features.all %}
+                        <li><a  href="{% url 'listings.property_features' row.record.id %}">Update Features</a></li>
+                    {% else %}
+                        <li><a href="{% url 'listings.property_features' row.record.id %}">Add Features</a></li>
+                    {% endif %}
+
+                    {% if row.record.images.all %}
+                        <li><a href="{% url 'listings.images_upload' row.record.id %}">Update Images</a></li>
+                    {% else %}
+                        <li><a href="{% url 'listings.images_upload' row.record.id %}">Add Images</a></li>
+                    {% endif %}
+
+                    {% if row.record.documents.all %}
+                        <li><a href="{% url 'listings.files_upload' row.record.id %}">Update Documents</a></li>
+                    {% else %}
+                        <li><a href="{% url 'listings.files_upload' row.record.id %}">Add Documents</a></li>
+                    {% endif %}
+
+
+                </ul>
+            </td>
+        </tr>
+        {% endblock table.tbody.row %}
+        {% empty %}
+        {% if table.empty_text %}
+        {% block table.tbody.empty_text %}
+        <tr><td colspan="{{ table.columns|length }}">{{ table.empty_text }}</td></tr>
+        {% endblock table.tbody.empty_text %}
+        {% endif %}
+        {% endfor %}
+    </tbody>
+    {% endblock table.tbody %}
+    {% block table.tfoot %}
+    <tfoot></tfoot>
+    {% endblock table.tfoot %}
+</table>
+{% endblock table %}
+{% endblock %}
+{% if table.page %}
+    {% block pagination %}
+        {% bootstrap_pagination table.page %}
+    {% endblock pagination %}
+{% endif %}

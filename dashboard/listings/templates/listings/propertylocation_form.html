@@ -1,0 +1,28 @@
+{% extends "back.html" %}
+{% load bootstrap3 %}
+{% block header %} Edit Location {% endblock %}
+{% block header_actions %}
+
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <!--<form method="POST" action="">{% csrf_token %}-->
+        <!--{{ form.media }}-->
+        <!--{{ form.as_p }}-->
+    <!--</form>-->
+<li class="active"><a href="{% url "listings.property_list" %}" class="btn btn-alt"><span class="elusive icon-list"></span> My Properties</a></li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <button type="button" class="btn" onclick="history.back()">
+            Cancel
+        </button>
+        {% endblock %}
+    </form>
+</div>
+

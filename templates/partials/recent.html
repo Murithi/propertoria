@@ -1,0 +1,71 @@
+{% load humanize %}
+<div class="box-images clearfix">
+    {% for property in properties %}
+        <div class="box-image no-border col-xs-12 col-sm-4 col-md-3 col-lg-2 hidden-xs hidden-sm hidden-md">
+        <a href="{% url 'properties.listing' property.slug %}">
+            <img src="{{ MEDIA_URL }}{{ property.primary_image_thumbnail }}" alt="{{ property.name }}">
+
+            <span class="flag">Ksh {{ property.price|floatformat|intcomma|intword }}</span>
+
+            <span class="description">
+                <span class="description-inner">
+                    <span class="title">{{ property.name|truncatechars:15 }}</span>
+
+                    <span class="box-image-meta row">
+                        {% ifequal property.property_type "land"%}
+
+                        <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Area</strong>
+                                <span>80m<sup>2</sup></span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+                        <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Neigh</strong>
+                                <span>{{ property.neighbourhood }}</span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+
+                        {% else %}
+
+                        <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Area</strong>
+                                <span>80m<sup>2</sup></span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+                        <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Neigh</strong>
+                                <span>{{ property.neighbourhood }}</span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+                        <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Beds</strong>
+                                <span>{{ property.bedrooms }}</span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+                         <span class="box-image-meta-cell col-xs-3 col-sm-3">
+                            <span class="box-image-meta-cell-inner">
+                                <strong>Bath</strong>
+                                <span>{{ property.bathrooms }}</span>
+                            </span><!-- /.box-image-meta-cell-inner -->
+                        </span><!-- /.box-image-meta-cell -->
+
+                        {% endifequal %}
+
+
+                    </span><!-- /.box-image-meta -->
+                </span><!-- /.description-inner -->
+            </span><!-- /.description -->
+        </a>
+    </div><!-- /.box-image -->
+    {% endfor %}
+</div><!-- /.box-images -->

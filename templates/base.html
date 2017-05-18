@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Exo+2:200,300,400,500,600,600italic,700">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}libraries/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}libraries/chosen/chosen.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}libraries/rangeSlider/css/ion.rangeSlider.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}libraries/rangeSlider/css/ion.rangeSlider.skinNice.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/variants/real-estate.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/homesoko.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}libraries/bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css">
+    <link href="{{ STATIC_URL }}selectable/css/dj.selectable.css" type="text/css" media="all" rel="stylesheet">
+    <title>{% block title %} MsProperties {% endblock %}</title>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+
+<body class="footer-top-dark">
+
+<div id="page">
+
+    {% block header %}
+        {% include "partials/header.html" %}
+    {% endblock %}
+    <div id="main-wrapper">
+        <div id="main">
+            <div id="main-inner">
+            <div class="row">
+                <div class="col-md-8 col-sm-offset-2">
+                    {% bootstrap_messages %}
+                </div>
+            </div>
+            {% block content %}
+
+            {% endblock  %}
+           </div> <!-- main-inner -->
+        </div> <!-- main-wrapper -->
+    </div><!-- main -->
+    {% block footer %}
+        {% include "partials/footer.html" %}
+    {% endblock %}
+
+
+
+
+</div><!-- /#page -->
+    {% block javascript %}
+
+
+    {% endblock %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}selectable/js/jquery.dj.selectable.js"></script>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/libraries/gmap3.clusterer.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/libraries/gmap3.infobox.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bxslider/jquery.bxslider.js"></script>
+<!--
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/chosen/chosen.jquery.min.js"></script>
+-->
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/isotope/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/rangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/flot/jquery.flot.canvas.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/flot/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/flot/jquery.flot.time.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/javascripts/bootstrap/carousel.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/javascripts/bootstrap/collapse.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/javascripts/bootstrap/dropdown.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/javascripts/bootstrap/tab.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/javascripts/bootstrap/transition.js"></script>
+<!--
+<script type="text/javascript" src="{{ STATIC_URL }}js/map.js"></script>
+-->
+<script type="text/javascript" src="{{ STATIC_URL }}js/graph.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/director.js"></script>
+ <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5889c60fda6792dd"></script>
+</body>
+</html>

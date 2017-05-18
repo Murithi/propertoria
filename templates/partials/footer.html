@@ -1,0 +1,134 @@
+    <div id="footer-wrapper">
+        <div id="footer">
+            <div id="footer-inner">
+                                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget">
+            <h3>Property Types</h3>
+
+            <div class="list-group">
+                <a href="{% url 'properties.list_letting' type='apartment' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Apartments for rent <!--<span class="badge">149</span>  --></a>
+                <a href="{% url 'properties.list_sale' type='apartment' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Apartments for sale </a>
+                <a href="{% url 'properties.list_sale' type='house' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Houses </a>
+                <a href="{% url 'properties.list_sale' type='office' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Offices </a>
+                <a href="{% url 'properties.list_sale' type='land' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Land </a>
+            </div><!-- /.list-group -->
+
+        </div><!-- /.widget -->
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget">
+            <h3>Towns</h3>
+
+            <div class="list-group">
+                <a href="{% url 'properties.list_city' city='nairobi' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Nairobi <!--<span class="badge">149</span> --></a>
+                <a href="{% url 'properties.list_city' city='mombasa' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Mombasa </a>
+                <a href="{% url 'properties.list_city' city='kisumu' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Kisumu </a>
+                <a href="{% url 'properties.list_city' city='nakuru' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Nakuru </a>
+                <a href="{% url 'properties.list_city' city='eldoret' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Eldoret </a>
+            </div><!-- /.list-group -->
+        </div><!-- /.widget -->
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget">
+            <h3>Neighbourhoods</h3>
+
+            <div class="list-group">
+                <a href="{% url 'properties.list_neighbourhood' neighbourhood='westlands' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Westlands <!--<span class="badge">149</span>--></a>
+                <a href="{% url 'properties.list_neighbourhood' neighbourhood='riverside' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Riverside </a>
+                <a href="{% url 'properties.list_neighbourhood' neighbourhood='kileleshwa' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Kileleshwa </a>
+                <a href="{% url 'properties.list_neighbourhood' neighbourhood='kilimani' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Kilimani </a>
+                <a href="{% url 'properties.list_neighbourhood' neighbourhood='karen' %}" class="list-group-item"><i class="fa fa-angle-right"></i> Karen </a>
+            </div><!-- /.list-group -->
+        </div><!-- /.widget -->
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget">
+            <h3>Contact us</h3>
+
+            <table class="contact">
+                <tbody>
+                    <!--
+                    <tr>
+                        <th class="address"><i class="fa fa-map-marker"></i> Address</th>
+                        <td>24 Ojijo Road<br>Parklands, Nairobi<br>Kenya<br></td>
+                    </tr>
+                    -->
+
+                    <tr>
+                        <th class="phone"> Mobile Number:</th>
+                        <td>+254 786 140 826</td>
+                    </tr>
+
+                    <tr>
+                        <th class="email"> Email:</th>
+                        <td><a href="mailto:info@example.com">info@msproperties.com</a></td>
+                    </tr>
+
+                    <tr>
+                        <th class="facebook"> facebook:</th>
+                        <td><a href="https://twitter.com/MSPropertiesKe/" class="twitter "  >
+                                <i class="fa fa-twitter" style="font-size:15px;color:#F6AECD;"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="skype">Office:</th>
+                        <td>Commonwealth House 4th floor, Moi Avenue, Nairobi, Kenya</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- /.widget -->
+    </div>
+</div>
+
+<div class="block-content block-content-medium-padding fullwidth background-primary-dark">
+    <div class="block-content-inner">
+        <div class="social-stripe center">
+            <a href="https://www.facebook.com/MS-Properties-304673639656692/" class="facebook" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+                <a href="https://twitter.com/MSPropertiesKe/" class="twitter"  target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="googleplus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+            <!--<a href="#" class="linkedin">-->
+                <!--<i class="fa fa-linkedin"></i>-->
+            <!--</a>-->
+            <!--<a href="#" class="whatsapp">-->
+                <!--<i class="fa fa-whatsapp"></i>-->
+            <!--</a>-->
+            <!--
+            <a href="#" class="dribbble">
+                <i class="fa fa-dribbble"></i>
+
+            <a href="#" class="pinterest">
+                <i class="fa fa-pinterest"></i>
+            </a>
+            <a href="#" class="dropbox">
+                <i class="fa fa-dropbox"></i>
+            </a>
+            <a href="#" class="linkedin">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="foursquare">
+                <i class="fa fa-foursquare"></i>
+            </a>
+            <a href="#" class="instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+            -->
+        </div><!-- /.social-stripe -->
+    </div><!-- /.block-content-inner -->
+</div><!-- /.block-content -->                        </div><!-- /.container -->
+                    </div><!-- /.footer-top -->
+            </div><!-- /#footer-inner -->
+        </div><!-- /#footer -->
+    </div><!-- /#footer-wrapper -->

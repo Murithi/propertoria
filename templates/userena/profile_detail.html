@@ -1,0 +1,31 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
+{% block header %}<h2>My Account</h2>{% endblock %}
+{% block header_actions %}
+    <li class="active"><a href="{% url "userena_profile_edit" username=user.username %}" class="btn">Edit Profile</a></li>
+    <li class="active"><a href="{% url "userena_password_change" username=user.username %}" class="btn">Change Password</a></li>
+    <li class="active"><a href="{% url "userena_email_change" username=user.username %}" class="btn">Change Email</a></li>
+{% endblock %}
+{% block content %}
+<div id="details">
+  {% block profile_details %}
+    <dl>
+      {% block profile_definition_list %}
+        {% if profile.user.get_full_name %}
+          <dt>{% trans "Name" %}</dt>
+          <dd>{{ profile.user.get_full_name }}</dd>
+        {% endif %}
+        {% if profile.user.email and not hide_email %}
+          <dt>{% trans "Email" %}</dt>
+          <dd>{{ profile.user.email }}</dd>
+        {% endif %}
+        {% if profile.company %}
+          <dt>{% trans "Company" %}</dt>
+          <dd>{{ profile.company }}</dd>
+        {% endif %}
+      {% endblock %}
+    </dl>
+  {% endblock %}
+</div>
+{% endblock %}

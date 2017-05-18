@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block title %}{{ block.super }} | {{ page_title }} {% endblock %}
+{% block content %}
+{% if properties %}
+<div class="jumbotron banner">
+    <div class="container">
+        <h1 class="large">
+			{{ page_title }}
+              </h1>
+        <h3></h3>
+    </div><!-- /.hero-text -->
+</div>
+{% endif %}
+
+<div class="container">
+	<div class="block-content">
+		<div class="block-content-inner">
+            <div class="boxes">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            {% if properties %}
+                            {% for property in properties %}
+                            <div class="col-sm-4 col-md-3">
+                                <div class="box">
+                                    <div class="box-picture">
+                                        <a href="{% url 'properties.listing' property.slug %}">
+                                            <img src="{{ property.primary_image_thumbnail.url }}" alt="{{ property.name }}">
+                                            <span></span>
+                                        </a>
+                                    </div><!-- /.box-picture -->
+
+                                    <div class="box-body">
+                                        <h2 class="box-title">
+                                            <a href="#">{{ property.name|truncatechars:15 }}</a>
+                                        </h2><!-- /.box-title -->
+
+                                        <div class="box-content">
+                                            <dl class="dl-horizontal">
+                                                <dt class="odd">Price</dt>
+                                                <dd class="odd">Ksh {{ property.price|floatformat|intcomma|intword }}</dd>
+                                                <dt>Beds</dt>
+                                                <dd>{{ property.bedrooms }}</dd>
+                                                <dt class="odd">Baths</dt>
+                                                <dd class="odd">{{ property.bathrooms }}</dd>
+                                                <dt>Type</dt>
+                                                <dd>{{ property.property_type }}</dd>
+                                            </dl>
+                                        </div><!-- /.box-content -->
+                                    </div><!-- /.box-body -->
+                                </div><!-- /.box -->
+                               </div>
+                            {% endfor %}
+                            {% else %}
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="page-header center">
+                                        <h1>No properties found!</h1>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        </div>
+                        </div><!-- /.row -->
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.boxes -->
+        <div class="center">
+                {% if properties %}
+                <ul class="pagination">
+                    {% if properties.has_previous %}
+                        <li><a href="?page={{ contacts.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a></li>
+                    {% endif %}
+                        <li class="active">Page {{ properties.number }} of {{ properties.paginator.num_pages }}</li>
+                    {% if properties.has_next %}
+                        <li><a href="?page={{ contacts.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div><!-- /.center -->
+		</div><!-- /.block-content-inner -->
+	</div><!-- /.block-content -->
+
+{% endblock %}

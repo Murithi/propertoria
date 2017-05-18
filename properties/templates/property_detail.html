@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | {{ property.name }} {% endblock %}
+{% load humanize %}
+{% load thumbnail %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="block-content">
+                <h2 class="widgetized-title">
+                    {{ property.name }} <small class="subtitle">{{ property.neighbourhood }}, {{ property.city }}</small>
+                </h2>
+
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" {% if forloop.first %}class="active"{% endif %}></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        {% for image in images %}
+                            {% thumbnail  image.file "850x490" crop="center" as img %}
+                            <div {% if forloop.first %}class="item active"{% else %}class="item"{% endif %}>
+                                <img alt="{{ property.name }}" src="{{ img.url }}">
+                            </div>
+                            {% endthumbnail %}
+                        {% endfor %}
+                    </div><!-- /.carousel-inner -->
+                </div><!-- /.carousel -->
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="widgetized-title">Overview</h3>
+
+                        <div class="box background-white">
+                            <div class="box-body">
+                                <div class="box-content">
+                                    <dl class="dl-horizontal no-top-margin">
+                                        <dt class="odd">Price</dt>
+                                        <dd class="odd"> KES {{ property.price|floatformat|intcomma|intword }}</dd>
+                                        {% ifequal property.property_type "land"%}
+                                            <dt>Type</dt>
+                                            <dd>{{ property.property_type }}</dd>
+                                        {% else %}
+                                            <dt>Baths</dt>
+                                            <dd>2</dd>
+
+                                            <dt class="odd">Beds</dt>
+                                            <dd class="odd">{{ property.bedrooms }}</dd>
+                                            <dt>Type</dt>
+                                            <dd>{{ property.property_type }}</dd>
+                                            <dt class="odd">Garage</dt>
+                                            <dd class="odd">Yes</dd>
+                                        {% endifequal %}
+                                    </dl>
+                                </div>
+                            </div>
+                        </div><!-- /.box -->
+                    </div>
+
+                    <div class="col-sm-6">
+                        <h3 class="widgetized-title">Description</h3>
+                        <p>
+                            {{ property.description }}
+                        </p>
+                    </div>
+                </div>
+
+                    <h3 class="widgetized-title">Available</h3>
+
+                                <div class="row">
+                                    <ul class="property-detail-amenities list-unstyled">
+                                        {% for feature in features %}
+                                            <li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> {{ feature.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div><!-- /.row -->
+            </div><!-- /.block-content -->
+        </div>
+
+        <div class="col-sm-6">
+            <div class="sidebar">
+
+                <div class="block-content">
+
+                   <div id="map"></div>
+            <script>
+              function initMap() {
+                var myloc = {lat:  {{ property.position.latitude }}, lng: {{ property.position.longitude }}};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: myloc
+                });
+                var marker = new google.maps.Marker({
+                  position: myloc,
+                  map: map
+                });
+              }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uWTu3XSH8WaJiI4LCBSF7bmAD0hjBgs&callback=initMap">
+            </script>
+        </div>
+           </div><!-- /.block-content -->
+            </div><!-- /.sidebar -->
+        </div>
+    </div><!-- /.row -->
+
+    <div class="block-content background-secondary fullwidth" data-background-image="../../assets/img/tmp/real-estate/banner3.png">
+        <div class="block-content-inner">
+            <h3 class="widgetized-title">Contact Agent</h3>
+
+            <form method="post" action="?" class="ng-pristine ng-valid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your name" required="required">
+                        </div><!-- /.form-group -->
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail" required="required">
+                        </div><!-- /.form-group -->
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Phone" required="required">
+                        </div><!-- /.form-group -->
+                    </div>
+
+                    <div class="col-sm-6">
+                        <textarea placeholder="Message" required="required" class="form-control h155" rows="4"></textarea>
+                    </div>
+                </div><!-- /.row -->
+
+                <div class="clearfix">
+                    <p class="pull-left"></p>
+                    <a href="#" class="btn btn-primary pull-right">Send</a>
+                </div>
+            </form>
+        </div><!-- /.block-content-inner -->
+    </div><!-- /.block-content -->
+</div>
+{% endblock %}
+
+<!--{% block javascript %}-->
+    <!--<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'>-->
+
+    <!--</script>-->
+
+    <!--<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=6766ac25321a56fe2c1a5e73deadcfdece9214a8'></script>-->
+
+        <!--<script type='text/javascript'>-->
+                        <!--function init_map(){-->
+                            <!--var myOptions = {zoom:15,center:new google.maps.LatLng(-4.0405129,39.70465730000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-4.0405129,39.70465730000001)});infowindow = new google.maps.InfoWindow({content:'<strong>Nyali</strong><br>Links Road<br> Mombasa<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);-->
+        <!--</script>-->
+<!--{% endblock %}-->

@@ -1,0 +1,91 @@
+﻿
+
+
+/**
+#header  {
+    background-color: #292f33;
+}
+.header-form {
+    background-color: #292f33;
+}
+.header-nav a {
+    background-color: #292f33;
+}
+.banner-search .tab-content-list {
+    background-color: #292f33;
+    }
+.banner-search .tab-title {
+    background-color: #292f33;
+}
+#footer {
+    background-color: #292f33;
+}
+/******* bootstrap-tables-2********/
+.table-container th.asc:after {
+  content: '\0000a0\0025b2';
+}
+.table-container th.desc:after {
+  content: '\0000a0\0025bc';
+}
+.pagination {
+  text-align: center;
+}
+
+.table td.details { white-space:pre }
+ul#id_features  {
+    list-style-type: none;
+    padding: 4px;
+    margin: 0px;
+}
+		
+/* -----------------------------------------------------------------------------
+
+    RESPONSIVE DEFINITIONS
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        LARGE DEVICES
+		devices with width between 992px and 1199px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 1199px ) {
+
+		/* your CSS here */
+
+	}
+
+    /* -------------------------------------------------------------------------
+        MEDIUM DEVICES
+		devices with width between 768px and 991px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 991px ) {
+
+		/* your CSS here */
+
+	}
+
+	/* -------------------------------------------------------------------------
+        SMALL DEVICES
+		devices with width between 481px and 767px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 767px ) {
+
+		/* your CSS here */
+
+	}
+
+	/* -------------------------------------------------------------------------
+        EXTRA SMALL DEVICES
+		devices with width up to 480px
+    ------------------------------------------------------------------------- */
+
+	@media ( max-width: 480px ) {
+
+		/* your CSS here */
+
+	}
+
+
